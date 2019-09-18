@@ -1,5 +1,5 @@
 /*
- * Global StyleSheet for any page in the project. All webpages need to import this.
+ * Global StyleSheet for any page in the project. All websites need to import this.
  */
 
 /* Links */
@@ -8,31 +8,34 @@ a:focus,
 a:hover {
     color: #fff;
 }
+
 /*
  * Base structure
  */
 
 html,
 body {
-    background-color: #333333;
+    background-color: #233d4a;
 }
 
 body {
     display: -ms-flexbox;
     display: flex;
-    color: #fff;
+    color: antiquewhite;
     text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
     box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
 }
 
 .cover-container {
-    max-width: 42em;
-    margin-left: auto!important;
-    margin-right: auto!important;
+    max-width: 60%;
+    margin-left: auto !important;
+    margin-right: auto !important;
 
 }
+
 .masthead {
-    margin-bottom: 25%;
+    margin-top: 2%;
+    margin-bottom: 12%;
     border: 5px outset cornflowerblue;
 }
 
@@ -62,19 +65,26 @@ body {
     color: #fff;
     border-bottom-color: #fff;
 }
-.outer-bound{
+
+.outer-bound {
     border: 2px solid teal;
 }
 
-.formStyle{
+.formStyle {
     padding: 1rem;
 }
+
 @media (min-width: 48em) {
     .masthead-brand {
         float: left;
     }
+
     .nav-masthead {
         float: right;
     }
 }
-
+/*To indicate a feild as a required feild*/
+.required:before {
+    content: " *";
+    color: red;
+}
