@@ -13,3 +13,5 @@ Link can be found [here](http:\\ec2-3-80-193-222.compute-1.amazonaws.com/sf/).
  'mvn package'
  4. Then, Deploy to your document root, and we have our student survey form up and running.
 
+
+Added jenkins support
