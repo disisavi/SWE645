@@ -59,7 +59,6 @@
                             <f:validateRegex pattern="#{validationPatterns.nameValidation}"/>
                             <f:validateLength maximum="15"/>
                         </p:inputText>
-                        <p:message for="firstName"/>
                     </div>
                     <div class="form-group col  ">
                         <p:outputLabel for="lastName">Last Name</p:outputLabel>
@@ -73,6 +72,8 @@
                             <f:validateLength maximum="15"/>
                         </p:inputText>
                     </div>
+                    <p:message for="firstName"/>
+                    <p:message for="lastName"/>
                 </div>
                 <div class="form-group col  ">
                     <p:outputLabel for="street">Street</p:outputLabel>
@@ -85,6 +86,7 @@
                         <f:validateRegex pattern="#{validationPatterns.addressValidation}"/>
                         <f:validateLength maximum="30"/>
                     </p:inputText>
+                    <p:message for="street"/>
                 </div>
                 <div class="form-row">
                     <div class="form-group col  ">
@@ -122,6 +124,9 @@
                             <f:validateLength maximum="5"/>
                         </p:inputText>
                     </div>
+                    <p:message for="state"/>
+                    <p:message for="city"/>
+                    <p:message for="zipCode"/>
                 </div>
                 <div class="form-row">
                     <div class="form-group col  ">
@@ -150,10 +155,12 @@
                         <p:outputLabel for="datePicker">Date of Submit</p:outputLabel>
                         <p:datePicker id="datePicker" value="#{surveyBean.dateOfSurvey}"/>
                     </div>
+                    <p:message for="PhoneNumber"/>
+                    <p:message for="inputEmail1"/>
                 </div>
-                <div class="form-group">
-                    <Label>What do you love about the campus the most?</Label>
-                    <p:selectManyCheckbox value="#{surveyBean.campusLike}">
+                <div class="form-group cover-container">
+                    <p:outputLabel for="check">What do you love about the campus the most?</p:outputLabel>
+                    <p:selectManyCheckbox id="check" value="#{surveyBean.campusLike}">
                         <f:selectItem itemLabel="students" itemValue="students"/>
                         <f:selectItem itemLabel="location" itemValue="location"/>
                         <f:selectItem itemLabel="campus" itemValue="campus"/>
@@ -163,18 +170,17 @@
                         <f:selectItem itemLabel="sports" itemValue="sports"/>
                     </p:selectManyCheckbox>
                 </div>
-                <div class="form-group">
+                <div class="form-group cover-container">
                     <p:outputLabel for="hear">How did you hear about us?</p:outputLabel>
-
-                    <p:selectBooleanCheckbox id="hear" value="#{surveyBean.campusHear}">
+                    <p:selectOneRadio id="hear" value="#{surveyBean.campusHear}">
                         <f:selectItem itemLabel="friends" itemValue="friends"/>
                         <f:selectItem itemLabel="television" itemValue="television"/>
                         <f:selectItem itemLabel="Internet" itemValue="Internet"/>
                         <f:selectItem itemLabel="other" itemValue="other"/>
-                    </p:selectBooleanCheckbox>
+                    </p:selectOneRadio>
 
                 </div>
-                <div class="form-group ">
+                <div class="form-group cover-container">
                     <div class="col">
                         <p:outputLabel for="auto">Would you recommend us?</p:outputLabel>
                         <p:autoComplete id="auto"
@@ -185,19 +191,26 @@
                         <p:outputLabel for="Raffle">Raffle</p:outputLabel>
                         <p:inputTextarea type="text" class="form-control" id="Raffle" aria-describedby="Street Address"
                                          placeholder="upto a 100s number (1,3,44,..)"/>
+                        <p:message for="raffle"/>
                     </div>
                 </div>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Comments</span>
-                    </div>
-                    <p:inputText class="form-control" aria-label="With textarea"
+                <div>
+                    <p:outputLabel for="raffle">Raffle tickets</p:outputLabel>
+                    <p:inputText id="raffle"
+                                 class="form-control" aria-label="With textarea"
                                  value="#{surveyBean.raffleNumbers}"
                                  validatorMessage="${validationPatterns.raffleValidatorMessage}"
                     />
 
                 </div>
+                <div>
+                    <p:outputLabel for="comments">Comments</p:outputLabel>
+                    <p:inputText id="comments"
+                                 class="form-control" aria-label="With textarea"
+                                 value="#{surveyBean.comments}"
+                    />
 
+                </div>
                 <label for="semesterDate">Semester Start Date</label>
                 <p:datePicker id="semesterDate" value="#{surveyBean.startSemester}"
                               validatorMessage="Semester Start date need to be greater than today"

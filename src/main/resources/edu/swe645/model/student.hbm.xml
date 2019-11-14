@@ -1,0 +1,29 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="edu.swe645.model">
+    <class name="Student" table="studentSurvey">
+        <id name="ID" type="java.lang.Integer">
+            <generator class="increment"/>
+        </id>
+        <property name="firstName" type="java.lang.String" length="15" not-null="false"/>
+        <property name="lastName" type="java.lang.String" length="15" not-null="false"/>
+        <property name="street" type="java.lang.String" length="50" not-null="true"/>
+        <property name="city" type="java.lang.String" length="15" not-null="false"/>
+        <property name="state" type="java.lang.String" length="15" not-null="false"/>
+        <property name="zipCode" type="java.lang.Integer" length="5" not-null="false"/>
+        <property name="phoneNumber" type="java.lang.String" length="14" not-null="false"/>
+        <property name="email" type="java.lang.String" length="30" not-null="false"/>
+        <property name="dateOfSurvey" type="java.util.Date" not-null="false"/>
+        <property name="campusLike" type="java.lang.String" not-null="false"/>
+        <property name="campusHear" type="java.lang.String" length="30" not-null="true"/>
+        <property name="recommendationRatings" type="java.lang.String" not-null="true"/>
+        <property name="comments" type="java.lang.String" length="100" not-null="true"/>
+        <set name="rafelStudents" table="student_rafel">
+            <key>
+                <column name="ID" not-null="true"/>
+            </key>
+            <one-to-many class="RafelStudent"/>
+        </set>
+    </class>
+</hibernate-mapping>

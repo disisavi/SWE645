@@ -1,6 +1,12 @@
 package edu.swe645.managedBean;
 
+import edu.swe645.doa.DOA;
+import edu.swe645.model.RafelStudent;
+import edu.swe645.model.Student;
+
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import java.util.*;
 
 @ManagedBean(name = "surveyBean")
@@ -15,10 +21,10 @@ public class SurveyBean {
     private String phoneNumber;
     private String email;
     private Date dateOfSurvey;
-    private List<String> campusLike;
+    private String[] campusLike;
     private String campusHear;
     private String recommendationRatings;
-    private ArrayList<Integer> raffleNumbers;
+    private String raffleNumbers;
     private String comments;
     private Date startSemester;
 
@@ -44,7 +50,7 @@ public class SurveyBean {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstName = firstName.trim();
     }
 
     public String getLastName() {
@@ -60,7 +66,7 @@ public class SurveyBean {
     }
 
     public void setStreet(String street) {
-        this.street = street;
+        this.street = street.trim();
     }
 
     public String getCity() {
@@ -68,7 +74,7 @@ public class SurveyBean {
     }
 
     public void setCity(String city) {
-        this.city = city;
+        this.city = city.trim();
     }
 
     public String getState() {
@@ -76,7 +82,7 @@ public class SurveyBean {
     }
 
     public void setState(String state) {
-        this.state = state;
+        this.state = state.trim();
     }
 
     public Integer getZipCode() {
@@ -100,7 +106,7 @@ public class SurveyBean {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email.trim();
     }
 
     public Date getDateOfSurvey() {
@@ -111,11 +117,11 @@ public class SurveyBean {
         this.dateOfSurvey = dateOfSurvey;
     }
 
-    public List<String> getCampusLike() {
+    public String[] getCampusLike() {
         return campusLike;
     }
 
-    public void setCampusLike(List<String> campusLike) {
+    public void setCampusLike(String[] campusLike) {
         this.campusLike = campusLike;
     }
 
@@ -135,11 +141,11 @@ public class SurveyBean {
         this.recommendationRatings = recommendationRatings;
     }
 
-    public ArrayList<Integer> getRaffleNumbers() {
+    public String getRaffleNumbers() {
         return raffleNumbers;
     }
 
-    public void setRaffleNumbers(ArrayList<Integer> raffleNumbers) {
+    public void setRaffleNumbers(String raffleNumbers) {
         this.raffleNumbers = raffleNumbers;
     }
 
@@ -159,8 +165,54 @@ public class SurveyBean {
         this.startSemester = startSemester;
     }
 
-    public void submitStudentSurvery() {
-        System.out.println("Something");
-    }
+    public String submitStudentSurvery() {
+        Boolean isMessage = false;
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        Student student = new Student();
+        student.setFirstName(this.firstName);
+        student.setLastName(this.lastName);
+        student.setStreet(this.street);
+        student.setCity(this.city);
+        student.setState(this.state);
+        student.setZipCode(this.zipCode);
+        student.setPhoneNumber(this.phoneNumber);
+        student.setEmail(this.email);
+        student.setDateOfSurvey(this.dateOfSurvey);
+        student.setCampusHear(this.campusHear);
+        student.setCampusLike(this.campusLike);
+        student.setRecommendationRatings(this.recommendationRatings);
+        student.setComments(this.comments);
+        student.setStartSemester(this.startSemester);
+        ArrayList<String> rafaelNumbers = new ArrayList<String>(Arrays.asList(raffleNumbers.split(",")));
+        HashSet<RafelStudent> rSet = new HashSet<>();
+        if (rafaelNumbers.size() > 9) {
+            try {
+                for (String rafael : rafaelNumbers) {
+                    Integer rNumber = Integer.parseInt(rafael);
+                    RafelStudent rafelStudent = new RafelStudent();
+                    rafelStudent.setRafelNumber(rNumber);
+                    rafelStudent.setStudent(student);
+                    rSet.add(rafelStudent);
+                }
+            } catch (NumberFormatException ex) {
+                ex.printStackTrace();
+                facesContext.addMessage("raffle", new FacesMessage("Non integer value found in Rafael, please correct"));
+            }
+        } else {
+            facesContext.addMessage("raffle", new FacesMessage("Please enter atleast 10 numbers "));
+        }
+        if (facesContext.getMessageList().size() > 0) {
+            isMessage = true;
+        }
 
+        if (isMessage) {
+            return null;
+        }
+        student.setRafelStudents(rSet);
+        DOA doa = DOA.getDoa();
+        doa.persistNewObject(student);
+        return "survey";
+
+    }
 }
+

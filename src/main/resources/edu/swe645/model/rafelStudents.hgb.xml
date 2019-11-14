@@ -1,0 +1,14 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="edu.swe645.model">
+    <class name="RafelStudent" table="student_rafel">
+        <id name="ID" type="java.lang.Integer">
+            <generator class="increment"></generator>
+        </id>
+        <property name="rafelNumber" type="java.lang.Integer" not-null="true"/>
+        <many-to-one name="student" class="Student" fetch="select">
+            <column name="ID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>
