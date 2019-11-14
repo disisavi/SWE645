@@ -83,6 +83,7 @@ body {
         float: right;
     }
 }
+
 /*To indicate a feild as a required feild*/
 .required:before {
     content: " *";

@@ -7,15 +7,69 @@
     <version>1.1-SNAPSHOT</version>
     <name>SWE645-Student-Survey-Form Maven Webapp</name>
     <url>https://github.com/disisavi/SWE645</url>
+    <repositories>
+        <repository>
+            <id>theme</id>
+            <name>themes</name>
+            <url>https://repository.primefaces.org</url>
+        </repository>
+    </repositories>
     <dependencies>
+        <!-- JSF -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <version>${com.sun.faces.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-impl</artifactId>
+            <version>${com.sun.faces.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>${javax.el.version}</version>
+        </dependency>
+        <!-- JSTL -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>
+        <!-- Primefaces -->
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>${primefaces.version}</version>
+        </dependency>
+        <!--        theme-->
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>cruze</artifactId>
+            <version>1.0.10</version>
         </dependency>
     </dependencies>
     <build>
         <finalName>sf</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
+                <configuration>
+                    <failOnMissingWebXml>true</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
+
+
+    <properties>
+        <com.sun.faces.version>2.2.14</com.sun.faces.version>
+        <javax.el.version>3.0.0</javax.el.version>
+        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
+        <primefaces.version>7.0</primefaces.version>
+        <jstl.version>1.2</jstl.version>
+    </properties>
 </project>
