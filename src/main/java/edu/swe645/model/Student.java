@@ -132,8 +132,10 @@ public class Student implements Serializable {
         for (String campus : campusLikeArray) {
             stringBuffer.append(campus).append(",");
         }
-        stringBuffer.deleteCharAt(stringBuffer.length() - 1);
-        this.campusLike = stringBuffer.toString();
+        if (stringBuffer.length() > 0) {
+            stringBuffer.deleteCharAt(stringBuffer.length() - 1);
+            this.campusLike = stringBuffer.toString();
+        }
     }
 
     public String getCampusHear() {

@@ -47,30 +47,32 @@
         <!--    this is the rest of the body of page. Footer will be a seperate section if implemented-->
         <div class="outer-bound">
             <h:form class="formStyle">
-                <div class="form-row">
-                    <div class="form-group col  ">
-                        <p:outputLabel for="firstName">First Name</p:outputLabel>
-                        <p:inputText class="form-control" id="firstName" aria-describedby="First Name"
-                                     placeholder="Your first name goes here"
-                                     value="#{surveyBean.firstName}"
-                                     required="true"
-                                     requiredMessage="Please enter first names"
-                                     validatorMessage="Name Format incorrect, please use only non number chars only">
-                            <f:validateRegex pattern="#{validationPatterns.nameValidation}"/>
-                            <f:validateLength maximum="15"/>
-                        </p:inputText>
-                    </div>
-                    <div class="form-group col  ">
-                        <p:outputLabel for="lastName">Last Name</p:outputLabel>
-                        <p:inputText type="text" class="form-control" id="lastName" aria-describedby="Last Name"
-                                     placeholder="Your last name goes here"
-                                     value="#{surveyBean.lastName}"
-                                     required="true"
-                                     requiredMessage="Please enter last name"
-                                     validatorMessage="Name Format incorrect, please use only non number chars only">
-                            <f:validateRegex pattern="#{validationPatterns.nameValidation}"/>
-                            <f:validateLength maximum="15"/>
-                        </p:inputText>
+                <div>
+                    <div class="form-row">
+                        <div class="form-group col  ">
+                            <p:outputLabel for="firstName">First Name</p:outputLabel>
+                            <p:inputText class="form-control" id="firstName" aria-describedby="First Name"
+                                         placeholder="Your first name goes here"
+                                         value="#{surveyBean.firstName}"
+                                         required="true"
+                                         requiredMessage="Please enter first names"
+                                         validatorMessage="Name Format incorrect, please use only non number chars only">
+                                <f:validateRegex pattern="#{validationPatterns.nameValidation}"/>
+                                <f:validateLength maximum="15"/>
+                            </p:inputText>
+                        </div>
+                        <div class="form-group col  ">
+                            <p:outputLabel for="lastName">Last Name</p:outputLabel>
+                            <p:inputText type="text" class="form-control" id="lastName" aria-describedby="Last Name"
+                                         placeholder="Your last name goes here"
+                                         value="#{surveyBean.lastName}"
+                                         required="true"
+                                         requiredMessage="Please enter last name"
+                                         validatorMessage="Name Format incorrect, please use only non number chars only">
+                                <f:validateRegex pattern="#{validationPatterns.nameValidation}"/>
+                                <f:validateLength maximum="15"/>
+                            </p:inputText>
+                        </div>
                     </div>
                     <p:message for="firstName"/>
                     <p:message for="lastName"/>
@@ -88,72 +90,76 @@
                     </p:inputText>
                     <p:message for="street"/>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col  ">
-                        <p:outputLabel for="city">City</p:outputLabel>
-                        <p:inputText type="text" class="form-control" id="city" aria-describedby="City Name"
-                                     placeholder="City Name" value="#{surveyBean.city}"
-                                     required="true"
-                                     requiredMessage="Please enter City Name"
-                                     validatorMessage="#{validationPatterns.nameValidationMessage}">
-                            <f:validateRegex pattern="#{validationPatterns.nameValidation}"/>
-                            <f:validateLength maximum="15"/>
-                        </p:inputText>
-                    </div>
-                    <div class="form-group col  ">
-                        <p:outputLabel for="state">State</p:outputLabel>
-                        <p:inputText type="text" class="form-control" id="state" aria-describedby="State Name"
-                                     placeholder="State Name"
-                                     required="true"
-                                     requiredMessage="Please enter state"
-                                     validatorMessage="#{validationPatterns.nameValidationMessage}"
-                                     value="#{surveyBean.state}">
-                            <f:validateRegex pattern="#{validationPatterns.nameValidation}"/>
-                            <f:validateLength maximum="15"/>
-                        </p:inputText>
-                    </div>
-                    <div class="form-group col">
-                        <p:outputLabel for="zipCode">Zip Code</p:outputLabel>
-                        <p:inputText type="text" class="form-control" id="zipCode" aria-describedby="Zip Code"
-                                     placeholder="Zip Code"
-                                     required="true"
-                                     requiredMessage="Please enter zip code"
-                                     validatorMessage="#{validationPatterns.zipcodeValidationMessage}"
-                                     value="#{surveyBean.zipCode}">
-                            <f:validateRegex pattern="#{validationPatterns.zipcodeValidation}"/>
-                            <f:validateLength maximum="5"/>
-                        </p:inputText>
+                <div>
+                    <div class="form-row">
+                        <div class="form-group col  ">
+                            <p:outputLabel for="city">City</p:outputLabel>
+                            <p:inputText type="text" class="form-control" id="city" aria-describedby="City Name"
+                                         placeholder="City Name" value="#{surveyBean.city}"
+                                         required="true"
+                                         requiredMessage="Please enter City Name"
+                                         validatorMessage="#{validationPatterns.nameValidationMessage}">
+                                <f:validateRegex pattern="#{validationPatterns.nameValidation}"/>
+                                <f:validateLength maximum="15"/>
+                            </p:inputText>
+                        </div>
+                        <div class="form-group col  ">
+                            <p:outputLabel for="state">State</p:outputLabel>
+                            <p:inputText type="text" class="form-control" id="state" aria-describedby="State Name"
+                                         placeholder="State Name"
+                                         required="true"
+                                         requiredMessage="Please enter state"
+                                         validatorMessage="#{validationPatterns.nameValidationMessage}"
+                                         value="#{surveyBean.state}">
+                                <f:validateRegex pattern="#{validationPatterns.nameValidation}"/>
+                                <f:validateLength maximum="15"/>
+                            </p:inputText>
+                        </div>
+                        <div class="form-group col">
+                            <p:outputLabel for="zipCode">Zip Code</p:outputLabel>
+                            <p:inputText type="text" class="form-control" id="zipCode" aria-describedby="Zip Code"
+                                         placeholder="Zip Code"
+                                         required="true"
+                                         requiredMessage="Please enter zip code"
+                                         converterMessage="Please use a 5 digit numerical"
+                                         value="#{surveyBean.zipCode}">
+                                <f:validateLength maximum="5"/>
+                            </p:inputText>
+                        </div>
                     </div>
                     <p:message for="state"/>
                     <p:message for="city"/>
                     <p:message for="zipCode"/>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col  ">
-                        <p:outputLabel for="PhoneNumber">Phone Number</p:outputLabel>
-                        <p:inputText type="text" class="form-control" id="PhoneNumber" aria-describedby="Phone Number"
-                                     placeholder="(999)999-9999"
-                                     required="true"
-                                     requiredMessage="Please enter phone number"
-                                     validatorMessage="#{validationPatterns.phonenumberValidationMessage}"
-                                     value="#{surveyBean.phoneNumber}">
-                            <f:validateRegex pattern="#{validationPatterns.phoneNumberValidation}"/>
-                        </p:inputText>
-                    </div>
-                    <div class="form-group col">
-                        <p:outputLabel for="inputEmail1">Email address</p:outputLabel>
-                        <p:inputText type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp"
-                                     placeholder="Enter email"
-                                     required="true"
-                                     requiredMessage="Please enter email addres"
-                                     validatorMessage="#{validationPatterns.emailValidationMessage}"
-                                     value="#{surveyBean.email}">
-                            <f:validateRegex pattern="#{validationPatterns.emailValidation}"/>
-                        </p:inputText>
-                    </div>
-                    <div class="form-group col  ">
-                        <p:outputLabel for="datePicker">Date of Submit</p:outputLabel>
-                        <p:datePicker id="datePicker" value="#{surveyBean.dateOfSurvey}"/>
+                <div>
+                    <div class="form-row">
+                        <div class="form-group col  ">
+                            <p:outputLabel for="PhoneNumber">Phone Number</p:outputLabel>
+                            <p:inputText type="text" class="form-control" id="PhoneNumber"
+                                         aria-describedby="Phone Number"
+                                         placeholder="(999)999-9999"
+                                         required="true"
+                                         requiredMessage="Please enter phone number"
+                                         validatorMessage="#{validationPatterns.phonenumberValidationMessage}"
+                                         value="#{surveyBean.phoneNumber}">
+                                <f:validateRegex pattern="#{validationPatterns.phoneNumberValidation}"/>
+                            </p:inputText>
+                        </div>
+                        <div class="form-group col">
+                            <p:outputLabel for="inputEmail1">Email address</p:outputLabel>
+                            <p:inputText type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp"
+                                         placeholder="Enter email"
+                                         required="true"
+                                         requiredMessage="Please enter email addres"
+                                         validatorMessage="#{validationPatterns.emailValidationMessage}"
+                                         value="#{surveyBean.email}">
+                                <f:validateRegex pattern="#{validationPatterns.emailValidation}"/>
+                            </p:inputText>
+                        </div>
+                        <div class="form-group col  ">
+                            <p:outputLabel for="datePicker">Date of Submit</p:outputLabel>
+                            <p:datePicker id="datePicker" value="#{surveyBean.dateOfSurvey}"/>
+                        </div>
                     </div>
                     <p:message for="PhoneNumber"/>
                     <p:message for="inputEmail1"/>
@@ -187,20 +193,15 @@
                                         value="#{surveyBean.recommendationRatings}"
                                         completeMethod="#{surveyBean.autoCompleteMethod}"/>
                     </div>
-                    <div class="col">
-                        <p:outputLabel for="Raffle">Raffle</p:outputLabel>
-                        <p:inputTextarea type="text" class="form-control" id="Raffle" aria-describedby="Street Address"
-                                         placeholder="upto a 100s number (1,3,44,..)"/>
-                        <p:message for="raffle"/>
-                    </div>
                 </div>
                 <div>
                     <p:outputLabel for="raffle">Raffle tickets</p:outputLabel>
                     <p:inputText id="raffle"
                                  class="form-control" aria-label="With textarea"
                                  value="#{surveyBean.raffleNumbers}"
-                                 validatorMessage="${validationPatterns.raffleValidatorMessage}"
-                    />
+                                 validatorMessage="${validationPatterns.raffleValidatorMessage}">
+                        <p:message for="raffle"/>
+                    </p:inputText>
 
                 </div>
                 <div>
@@ -211,7 +212,7 @@
                     />
 
                 </div>
-                <label for="semesterDate">Semester Start Date</label>
+                <p:outputLabel for="semesterDate">Semester Start Date</p:outputLabel>
                 <p:datePicker id="semesterDate" value="#{surveyBean.startSemester}"
                               validatorMessage="Semester Start date need to be greater than today"
                               mindate="#{now}">
@@ -229,5 +230,6 @@
     </div>
 
 </h:body>
+<!--end of body-->
 <!--end of body-->
 </html>

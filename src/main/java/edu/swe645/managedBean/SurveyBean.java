@@ -183,25 +183,28 @@ public class SurveyBean {
         student.setRecommendationRatings(this.recommendationRatings);
         student.setComments(this.comments);
         student.setStartSemester(this.startSemester);
-        ArrayList<String> rafaelNumbers = new ArrayList<String>(Arrays.asList(raffleNumbers.split(",")));
+        ArrayList<String> rafaelNumbers = new ArrayList<>(Arrays.asList(raffleNumbers.split(",")));
         HashSet<RafelStudent> rSet = new HashSet<>();
-        if (rafaelNumbers.size() > 9) {
-            try {
-                for (String rafael : rafaelNumbers) {
-                    Integer rNumber = Integer.parseInt(rafael);
+        try {
+            for (String rafael : rafaelNumbers) {
+                if (rafael.trim().length() > 0) {
+                    Integer rNumber = Integer.parseInt(rafael.trim());
                     RafelStudent rafelStudent = new RafelStudent();
                     rafelStudent.setRafelNumber(rNumber);
                     rafelStudent.setStudent(student);
                     rSet.add(rafelStudent);
                 }
-            } catch (NumberFormatException ex) {
-                ex.printStackTrace();
-                facesContext.addMessage("raffle", new FacesMessage("Non integer value found in Rafael, please correct"));
             }
-        } else {
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+            facesContext.addMessage("raffle", new FacesMessage("Non integer value found in Rafael, please correct"));
+        }
+
+        if (rSet.size() < 9 && rSet.size() != 0) {
             facesContext.addMessage("raffle", new FacesMessage("Please enter atleast 10 numbers "));
         }
-        if (facesContext.getMessageList().size() > 0) {
+
+        if (facesContext.getMessageList("raffle").size() > 0) {
             isMessage = true;
         }
 

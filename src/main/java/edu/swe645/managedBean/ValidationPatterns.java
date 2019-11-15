@@ -11,7 +11,7 @@ public class ValidationPatterns {
     private String nameValidationMessage = "Please use only chars and upto 15 chars only";
     private String zipcodeValidation = "^[0-9]*$";
     private String zipcodeValidationMessage = "Please use only digits to enter zipcode";
-    private String phoneNumberValidation = "^\\([0-9]{3}\\) [0-9]{3}-[0-9]{3}$";
+    private String phoneNumberValidation = "^\\([0-9]{3}\\) [0-9]{3}-[0-9]{4}$";
     private String emailValidation = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     private String emailValidationMessage = "Please enter a valid email id";
     private String phonenumberValidationMessage = "Please use the following pattern (222) 222-222";
